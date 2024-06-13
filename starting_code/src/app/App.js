@@ -9,21 +9,27 @@ import Author from "../components/Author";
 import Profile from "../components/Profile";
 import EditProfileForm from "../components/EditProfileForm";
 import Root from "../components/Root";
-import { Route, RouterProvider } from 'react-router-dom';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
 import "./App.css";
 
-const router = 
+const router =
   /* Wrap this Root Route to create Router here */
-  <Route path="/" element={ <Root/> }>
-    {/* Add Routes here! */}
-  </Route>
+  createBrowserRouter(createRoutesFromElements(
+    <Route path="/" element={<Root />}>
+      <Route path="about" element={ <About/>}/>
+      <Route path="sign-up" element={ <SignUp/>}/>
+      <Route path="articles" element={ <Articles/>}/>
+      <Route path="categories" element={ <Categories/>}/>
+      <Route path="profile" element={ <Profile/>}/>
+    </Route>)
+  )
 
 function App() {
   return (
     <>
       { /* Replace below and add Router Provider*/}
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </>
   );
 }
